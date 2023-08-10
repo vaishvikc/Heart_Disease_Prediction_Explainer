@@ -25,9 +25,11 @@ rf_classif = RandomForestClassifier(n_estimators=100, random_state=100)
 rf_classif.fit(X_train, Y_train)
 
 Y_test_preds = rf_classif.predict(X_test)
-data['Heart Disease']=rf_classif.predict(data[Tcolumns])
+
+data['Model_preds']=rf_classif.predict(data[Tcolumns])
+
 # Sidebar for navigation
-st.sidebar.title("Heart Disease :red[Prediction]: :anatomical_heart: ")
+st.title("Heart Disease :red[Prediction]: :anatomical_heart: ")
 st.sidebar.markdown("Predictions for Heart disease using RandomForestClassifier ")
 
 menu = ["Data Preview", "Model Performance", "Model Evaluation & Feedback"]
@@ -64,12 +66,12 @@ elif choice == "Model Evaluation & Feedback":
 
     col1, col2 = st.columns(2)
     with col1:
-        selected_disease_labels = st.multiselect("Select Heart Disease Labels", data['Heart Disease'].unique())
+        selected_disease_labels = st.multiselect("Select Model Prediction Label", data['Model_preds'].unique())
     with col2:
-        selected_doctor_labels = st.multiselect("Select Doctor Labels", ['Absence', 'Presence','not Evaluted'])
+        selected_doctor_labels = st.multiselect("Select Doctor Label", ['Absence', 'Presence','not Evaluted'])
     st.write('Please select both')
     filtered_data = data[
-        (data['Heart Disease'].isin(selected_disease_labels)) &
+        (data['Model_preds'].isin(selected_disease_labels)) &
         (data['Doctors label'].isin(selected_doctor_labels))
     ] if selected_disease_labels or selected_doctor_labels else data
 
