@@ -25,7 +25,7 @@ rf_classif = RandomForestClassifier(n_estimators=100, random_state=100)
 rf_classif.fit(X_train, Y_train)
 
 Y_test_preds = rf_classif.predict(X_test)
-
+data['Heart Disease']=rf_classif.predict(data[Tcolumns])
 # Sidebar for navigation
 st.sidebar.title("Heart Disease :red[Prediction]: :anatomical_heart: ")
 st.sidebar.markdown("Predictions for Heart disease using RandomForestClassifier ")
