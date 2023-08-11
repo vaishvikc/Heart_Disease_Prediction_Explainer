@@ -1,5 +1,3 @@
-# Heart_Disease_Prediction_Explainer
-
 # Heart Disease Prediction App using Streamlit
 
 ## Overview
